@@ -8,10 +8,18 @@ public class GameManager : MonoBehaviour
     public float slowDown = 10f ;
     private score theScoreManager;
     public float yourScore;
-   public void EndGame()
+    public GameObject retryui;
+   // public GameObject restartui;
+
+    public static bool reviveHasBeenUsed = false;
+
+  
+    public void EndGame()
     {
         StartCoroutine(RestartLevel());
         theScoreManager = FindObjectOfType<score>();
+       
+     
     }
 
     IEnumerator RestartLevel()
@@ -24,11 +32,47 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         Time.fixedDeltaTime = Time.fixedDeltaTime * slowDown;
 
+        if (true)
+        {
+           
+           
+            if (reviveHasBeenUsed == false)
+            {
+                retryui.SetActive(true);
+                Time.timeScale = 0f;
 
-       
-        SceneManager.LoadScene("Restart"); 
+                reviveHasBeenUsed = true;
+            }
+
+            else if (reviveHasBeenUsed == true)
+            {
+                Time.timeScale = 0f;
+                reviveHasBeenUsed = false;
+                SceneManager.LoadScene("Restart");
+              
+            }
+
+        }
+        
+      
+      
+      
+        
+
         
 
     }
+    public void RHBU()
+    {
+        retryui.SetActive(false);
+        reviveHasBeenUsed = true;
+    }
+
+    public void RHBUFalse()
+    {
+        
+        reviveHasBeenUsed = false;
+    }
+
 }
 

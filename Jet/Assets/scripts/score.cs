@@ -33,8 +33,8 @@ public class score : MonoBehaviour
     void Update()
     {
 
-        ScoreText.text = "Score : " + Mathf.Round(ScoreCount);
-        Highscoretext.text = "HighScore : " + Mathf.Round(HighscoreCount);
+        ScoreText.text = " " + Mathf.Round(ScoreCount);
+        Highscoretext.text = " " + Mathf.Round(HighscoreCount);
         if (scoreIncrease) 
         { ScoreCount += pointIncreased * Time.deltaTime ; }
         

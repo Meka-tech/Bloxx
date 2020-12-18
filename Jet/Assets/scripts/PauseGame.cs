@@ -54,7 +54,9 @@ public class PauseGame : MonoBehaviour
 
     public void mainmenu()
     {
+        FindObjectOfType<GameManager>().RHBUFalse();
         SceneManager.LoadScene("StartMenu");
+        Time.timeScale = 1f;
     }
     public void ArrowPause()
     {
@@ -72,5 +74,11 @@ public class PauseGame : MonoBehaviour
 
 
         
+    }
+    public void Restart()
+    {
+        FindObjectOfType<GameManager>().RHBUFalse();
+        SceneManager.LoadScene("main level");
+        Time.timeScale = 1f;
     }
 }   

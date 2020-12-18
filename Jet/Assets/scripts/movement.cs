@@ -11,8 +11,10 @@ public class movement : MonoBehaviour
     public GameObject bulletPrefab;
     private float dirx;
     
+    
     Collider2D playerCollider;
     SpriteRenderer playerC;
+    
 
     
 
@@ -104,4 +106,19 @@ public class movement : MonoBehaviour
     {
         playerC.color = Color.white;
     }
+    public void revived()
+    {
+        playerCollider.enabled = false;
+        playerC.color = Color.red;
+
+        Invoke("isToRevive", 3);
+       
+    }
+
+    public void isToRevive()
+    {
+        playerCollider.enabled = true;
+        playerC.color = Color.white;
+    }
+
 }

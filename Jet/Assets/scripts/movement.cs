@@ -36,7 +36,7 @@ public class movement : MonoBehaviour
 
         rb.MovePosition(newPosition);
 
-        speed += Time.timeSinceLevelLoad / 100000f;
+        speed += Time.timeSinceLevelLoad / 95000f;
         //to increase speed
 
         dirx = CrossPlatformInputManager.GetAxis("Horizontal") * speed;
@@ -84,6 +84,7 @@ public class movement : MonoBehaviour
 
             Invoke("Green", 5);
         }
+
     }
 
     public void ShootBullet()

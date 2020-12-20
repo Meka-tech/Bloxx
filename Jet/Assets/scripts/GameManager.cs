@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private score theScoreManager;
     public float yourScore;
     public GameObject retryui;
-   // public GameObject restartui;
+    public GameObject deathFlash;
 
     public static bool reviveHasBeenUsed = false;
 
@@ -18,12 +18,18 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(RestartLevel());
         theScoreManager = FindObjectOfType<score>();
+        
        
      
     }
 
     IEnumerator RestartLevel()
     {
+        deathFlash.SetActive(true);
+        Invoke("deathFlashFalse", 1.1f * Time.deltaTime);
+
+        
+
         Time.timeScale = 1f / slowDown;
         Time.fixedDeltaTime = Time.fixedDeltaTime / slowDown;
 
@@ -31,6 +37,9 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
         Time.fixedDeltaTime = Time.fixedDeltaTime * slowDown;
+
+       
+
 
         if (true)
         {
@@ -72,6 +81,10 @@ public class GameManager : MonoBehaviour
     {
         
         reviveHasBeenUsed = false;
+    }
+    public void deathFlashFalse()
+    {
+        deathFlash.SetActive(false);
     }
 
 }
